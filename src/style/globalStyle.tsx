@@ -6,9 +6,9 @@ const style = css`
     max-width: 420px;
     padding: 0;
     margin: 0px auto;
+
     -webkit-text-size-adjust: none;
   }
-
   select,
   input,
   button,
