@@ -1,7 +1,13 @@
-import "./App.css";
+import AppRouter from "./routes/AppRouter";
+import GlobalStyle from "./style/globalStyle";
 
 function App() {
-  return <div>exqress for deliver</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <AppRouter />
+    </>
+  );
 }
 
 export default App;
