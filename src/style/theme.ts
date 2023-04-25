@@ -1,5 +1,6 @@
 const colors = {
   main: "#485EEE",
+  sub: "#485EEEAB",
   black: "#000000",
   white: "#ffffff",
   gray100: "#9C9C9C",

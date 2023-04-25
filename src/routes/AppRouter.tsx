@@ -3,6 +3,7 @@ import Scan from "@/pages/Scan";
 import ScanResult from "@/pages/ScanResult";
 import Layout from "@/components/common/layout";
 import Navigation from "@/components/common/navigation";
+import SignIn from "../pages/SignIn";
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
             <Route path="/scan/result" element={<ScanResult />} />
             {/* <Route path="/deliver/*" element/> */}
             {/* <Route path="/" element={<Navigate replace to="/scan" />} /> */}
+            <Route path="/signin" element={<SignIn />} />
           </Route>
         </Routes>
         <Navigation />
