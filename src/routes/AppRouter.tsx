@@ -1,7 +1,8 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Scan from "../pages/Scan";
-import Navigation from "../components/common/navigation";
-import Layout from "../components/common/layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Scan from "@/pages/Scan";
+import ScanResult from "@/pages/ScanResult";
+import Layout from "@/components/common/layout";
+import Navigation from "@/components/common/navigation";
 
 const AppRouter = () => {
   return (
@@ -11,7 +12,8 @@ const AppRouter = () => {
           <Route element={<Layout />}>
             {/* <Route path="/signin/*" element/> */}
             {/* <Route path="/signup/*" element/> */}
-            <Route path="/" element={<Scan />} />
+            <Route path="/scan" element={<Scan />} />
+            <Route path="/scan/result" element={<ScanResult />} />
             {/* <Route path="/deliver/*" element/> */}
             {/* <Route path="/" element={<Navigate replace to="/scan" />} /> */}
           </Route>

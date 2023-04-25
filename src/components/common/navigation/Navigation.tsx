@@ -7,13 +7,13 @@ import Truck from "@/assets/truck.svg";
 const Navigation = () => {
   return (
     <style.Wrapper>
-      <Link to="qrscan">
+      <Link to="/">
         <style.Img src={Truck} />
       </Link>
-      <Link to="qrscan">
+      <Link to="/">
         <style.Img src={QrCode} />
       </Link>
-      <Link to="qrscan">
+      <Link to="/">
         <style.Img src={SignOut} />
       </Link>
     </style.Wrapper>
