@@ -16,32 +16,30 @@ const SignInTemplate = ({
   password,
   onChange,
   onClick,
-}: SignInTemplateProps) => {
-  return (
-    <style.Wrapper>
-      <img src={MainLogo} />
-      <style.Box>
-        <style.Inner>
-          <Input
-            value={id}
-            name="id"
-            placeHolder="아이디"
-            sizeType="Big"
-            onChange={onChange}
-          />
-          <Input
-            value={password}
-            name="password"
-            placeHolder="비밀번호"
-            sizeType="Big"
-            onChange={onChange}
-          />
-        </style.Inner>
-        <SubmitBtn text={"로그인"} onClick={onClick} />
-      </style.Box>
-      <SignupBtn />
-    </style.Wrapper>
-  );
-};
+}: SignInTemplateProps) => (
+  <style.Wrapper>
+    <img src={MainLogo} />
+    <style.Box>
+      <style.Inner>
+        <Input
+          value={id}
+          name="id"
+          placeHolder="아이디"
+          sizeType="Big"
+          onChange={onChange}
+        />
+        <Input
+          value={password}
+          name="password"
+          placeHolder="비밀번호"
+          sizeType="Big"
+          onChange={onChange}
+        />
+      </style.Inner>
+      <SubmitBtn text={"로그인"} onClick={onClick} />
+    </style.Box>
+    <SignupBtn />
+  </style.Wrapper>
+);
 
 export default SignInTemplate;

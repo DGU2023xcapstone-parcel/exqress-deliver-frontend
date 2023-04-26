@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  height: calc(100vh - 79px);
+  height: 100vh;
 
   display: flex;
   flex-direction: column;

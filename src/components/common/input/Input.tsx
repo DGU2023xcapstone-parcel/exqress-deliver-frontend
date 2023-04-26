@@ -15,17 +15,15 @@ const Input = ({
   placeHolder,
   sizeType,
   onChange,
-}: InputProps) => {
-  return (
-    <style.Wrapper sizeType={sizeType}>
-      <style.Box
-        name={name}
-        value={value}
-        placeholder={placeHolder}
-        onChange={onChange}
-      />
-    </style.Wrapper>
-  );
-};
+}: InputProps) => (
+  <style.Wrapper sizeType={sizeType}>
+    <style.Box
+      name={name}
+      value={value}
+      placeholder={placeHolder}
+      onChange={onChange}
+    />
+  </style.Wrapper>
+);
 
 export default Input;

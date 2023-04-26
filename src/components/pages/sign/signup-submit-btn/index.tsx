@@ -1,3 +1,3 @@
-import SignupSubmitBtn from "./SignupSubmitBtn.style";
+import SignupSubmitBtn from "./SignupSubmitBtn.tsx";
 
 export default SignupSubmitBtn;

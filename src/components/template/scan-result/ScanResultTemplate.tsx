@@ -5,12 +5,10 @@ import * as style from "./ScanResultTemplate.style";
 interface ScanResultTemplateProps {
   resultList: resultType;
 }
-const ScanResultTemplate = ({ resultList }: ScanResultTemplateProps) => {
-  return (
-    <style.Wrapper>
-      <ResultList resultList={resultList} />
-    </style.Wrapper>
-  );
-};
+const ScanResultTemplate = ({ resultList }: ScanResultTemplateProps) => (
+  <style.Wrapper>
+    <ResultList resultList={resultList} />
+  </style.Wrapper>
+);
 
 export default ScanResultTemplate;

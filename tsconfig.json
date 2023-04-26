@@ -30,7 +30,7 @@
       "@/hooks/*": ["./src/hooks/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/styles/*": ["./src/styles/*"],
-      "@/stores/*": ["./src/stores/*"],
+      "@/recoil/*": ["./src/recoil/*"],
       "@/types/*": ["./src/types/*"],
       "@/utils/*": ["./src/utils/*"]
     }

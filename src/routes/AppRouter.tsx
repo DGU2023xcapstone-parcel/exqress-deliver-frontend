@@ -12,17 +12,16 @@ const AppRouter = () => {
       <BrowserRouter>
         <Routes>
           {/* <Route element={<Layout />}> */}
-          <Route path="/scan" element={<Layout />}>
-            <Route index element={<Scan />} />
-            <Route path="result" element={<ScanResult />} />
-          </Route>
           <Route path="/" element={<Layout />}>
             <Route path="signin" element={<SignIn />} />
             <Route path="signup" element={<SignUp />} />
+            <Route path="scan">
+              <Route path="" element={<Scan />} />
+              <Route path="result" element={<ScanResult />} />
+            </Route>
           </Route>
           {/* </Route> */}
         </Routes>
-        <Navigation />
       </BrowserRouter>
     </>
   );
