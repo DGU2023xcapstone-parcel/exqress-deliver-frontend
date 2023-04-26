@@ -4,7 +4,7 @@ const SignupBtn = () => {
   return (
     <style.Wrapper>
       <style.Text>아직 계정이 없으세요?&nbsp;</style.Text>
-      <style.Button to="/">가입하기</style.Button>
+      <style.Button to="/signup">가입하기</style.Button>
     </style.Wrapper>
   );
 };
