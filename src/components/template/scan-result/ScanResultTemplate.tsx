@@ -1,8 +1,8 @@
 import ResultList from "@/components/pages/scan/result-list";
-import { resultType } from "@/pages/ScanResult";
+import { resultType } from "@/types/types";
 import * as style from "./ScanResultTemplate.style";
 
-interface ScanResultTemplateProps {
+export interface ScanResultTemplateProps {
   resultList: resultType;
 }
 const ScanResultTemplate = ({ resultList }: ScanResultTemplateProps) => (

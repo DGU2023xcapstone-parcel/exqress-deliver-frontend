@@ -1,11 +1,11 @@
 import { ChangeEvent } from "react";
 import Input from "@/components/common/input";
-import * as style from "./SignInTemplate.style";
 import MainLogo from "@/assets/mainLogo.svg";
-import SubmitBtn from "../../pages/sign/submit-btn";
-import SignupBtn from "../../pages/sign/signup-btn";
+import SubmitBtn from "@/components/pages/sign/submit-btn";
+import SignupBtn from "@/components/pages/sign/signup-btn";
+import * as style from "./SignInTemplate.style";
 
-interface SignInTemplateProps {
+export interface SignInTemplateProps {
   id: string;
   password: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;

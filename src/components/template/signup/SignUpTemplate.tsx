@@ -4,7 +4,7 @@ import * as style from "./SignUpTemplate.style";
 import { ChangeEvent } from "react";
 import SignupSubmitBtn from "@/components/pages/sign/signup-submit-btn";
 
-interface SignUpTemplateProps {
+export interface SignUpTemplateProps {
   signupState: SignUpStateType;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;

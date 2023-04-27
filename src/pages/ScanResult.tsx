@@ -1,13 +1,5 @@
 import ScanResultTemplate from "@/components/template/scan-result";
-
-export interface resultType {
-  id: string;
-  company: string;
-  info: string;
-  sender: string;
-  receiver: string;
-  deliver: string;
-}
+import { resultType } from "@/types/types";
 
 const MOCKLIST: resultType = {
   id: "482299",

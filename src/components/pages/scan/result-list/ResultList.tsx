@@ -1,11 +1,8 @@
-import { resultType } from "@/pages/ScanResult";
+import ListContent from "@/components/pages/scan/list-content/ListContent";
+import { ScanResultTemplateProps } from "@/components/template/scan-result/ScanResultTemplate";
 import * as style from "./ResultList.style";
-import ListContent from "../list-content/ListContent";
 
-interface ResultListProps {
-  resultList: resultType;
-}
-const ResultList = ({ resultList }: ResultListProps) => (
+const ResultList = ({ resultList }: ScanResultTemplateProps) => (
   <style.Wrapper>
     <style.Title>택배정보</style.Title>
     <style.Box>

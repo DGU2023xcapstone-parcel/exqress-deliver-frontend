@@ -1,7 +1,7 @@
 import QrScanner from "@/components/pages/scan/qr-scanner";
 import * as style from "./ScanTemplate.style";
 
-interface ScanTemplateProps {
+export interface ScanTemplateProps {
   result: string;
   onError: (err: any) => void;
   onScan: (data: string | null) => void;

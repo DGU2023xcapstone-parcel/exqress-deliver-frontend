@@ -1,10 +1,10 @@
+import { ScanTemplateProps } from "@/components/template/scan/ScanTemplate";
 import * as style from "./QrScanner.style";
 
-interface QrScannerProps {
-  onError: (err: any) => void;
-  onScan: (data: string | null) => void;
-}
-const QrScanner = ({ onError, onScan }: QrScannerProps) => (
+const QrScanner = ({
+  onError,
+  onScan,
+}: Pick<ScanTemplateProps, "onError" | "onScan">) => (
   <style.Scanner showViewFinder delay={300} onError={onError} onScan={onScan} />
 );
 
