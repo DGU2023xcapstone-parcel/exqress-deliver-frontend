@@ -18,7 +18,7 @@ const InfoContent = ({
   onClick,
 }: InfoContentProps) => {
   return (
-    <style.Wrapper>
+    <style.Wrapper onClick={onClick}>
       <div>
         <style.Text isBig={false} isDark>
           {date}
