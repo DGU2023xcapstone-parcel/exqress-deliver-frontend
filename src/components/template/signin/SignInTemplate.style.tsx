@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   height: 140px;
-  width: 90%;
+  width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
 

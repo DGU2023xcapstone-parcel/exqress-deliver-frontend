@@ -4,7 +4,7 @@ import StateRadioBtn from "@/components/pages/info/state-radio-btn";
 import InfoContent from "@/components/pages/info/info-content";
 import * as style from "./InfoTemplate.style";
 
-const RADIO_LIST = [
+const STATE_LIST = [
   { text: "전체", inputValue: "all" },
   { text: "배송완료", inputValue: "finish" },
   { text: "배송시작", inputValue: "start" },
@@ -28,12 +28,13 @@ const InfoTemplate = ({
         <style.Title>배송 정보</style.Title>
         <style.Line />
         <style.RadioBox>
-          {RADIO_LIST.map((radio) => (
+          {STATE_LIST.map((state) => (
             <StateRadioBtn
-              text={radio.text}
-              inputValue={radio.inputValue}
+              text={state.text}
+              inputValue={state.inputValue}
               onChange={onChange}
               selected={radioValue}
+              key={state.inputValue}
             />
           ))}
         </style.RadioBox>
@@ -48,6 +49,7 @@ const InfoTemplate = ({
             name={info.name}
             company={info.company}
             onClick={onClick}
+            key={info.invoiceNo}
           />
         ))}
       </style.InfoBox>
