@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   height: 60%;
-  width: 90%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;

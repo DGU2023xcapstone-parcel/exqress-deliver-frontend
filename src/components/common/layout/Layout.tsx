@@ -9,7 +9,9 @@ const Layout = () => {
 
   return (
     <style.Wrapper>
-      <Outlet />
+      <style.Box>
+        <Outlet />
+      </style.Box>
       <Navigation />
       {/* {isauth && <Navigation />} */}
     </style.Wrapper>
