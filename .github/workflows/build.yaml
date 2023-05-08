@@ -62,7 +62,7 @@ jobs:
           ECR_REPOSITORY: front-delivery
           IMAGE_TAG: ${{ github.run_attempt }}
         run: |
-          sed -i "s/image:.*/image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/g" front-delivery-deploy.yaml
+          sed -i "s|image:.*|image: $ECR_REGISTRY\/$ECR_REPOSITORY:$IMAGE_TAG|g" front-delivery-deploy.yaml
           cat front-delivery-deploy.yaml
 
       # 수정된 파일 commit & push
