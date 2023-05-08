@@ -62,14 +62,13 @@ jobs:
           ECR_REPOSITORY: front-delivery
           IMAGE_TAG: ${{ github.run_attempt }}
         run: |
-          ls
+          cd exqress-kubernetes
           sed -i "s|image:.*|image: $ECR_REGISTRY\/$ECR_REPOSITORY:$IMAGE_TAG|g" front-delivery-deploy.yaml
           cat front-delivery-deploy.yaml
 
       # 수정된 파일 commit & push
       - name: Commit files
         run: |
-          cd exqress-kubernetes
           git add .
           git commit -am "Update image tag ${{env.IMAGE_TAG}}"
           git push -u origin main
