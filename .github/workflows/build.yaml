@@ -34,7 +34,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: front-delivery
-          IMAGE_TAG: ${{ github.run_attempt }}
+          IMAGE_TAG: ${{ github.run_number }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -60,7 +60,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: front-delivery
-          IMAGE_TAG: ${{ github.run_attempt }}
+          IMAGE_TAG: ${{ github.run_number }}
         run: |
           cd exqress-kubernetes
           sed -i "s|image:.*|image: $ECR_REGISTRY\/$ECR_REPOSITORY:$IMAGE_TAG|g" front-delivery-deploy.yaml
@@ -68,9 +68,11 @@ jobs:
 
       # 수정된 파일 commit & push
       - name: Commit files
+        env:
+          IMAGE_TAG: ${{ github.run_number }}
         run: |
           cd exqress-kubernetes
           git config --global user.email "hsshin0602@github.com"
           git config --global user.name "hsshin0602"
-          git commit -am "Update image tag ${{env.IMAGE_TAG}}"
+          git commit -am "Update image tag $IMAGE_TAG"
           git push -u origin main
