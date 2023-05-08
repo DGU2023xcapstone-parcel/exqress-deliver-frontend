@@ -4,7 +4,13 @@ on:
   pull_request:
     branches: [main]
 
-name: AWS ECR push
+name: AWS ECR push & deploy k8s
+
+env:
+  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  ECR_REPOSITORY: front-delivery
+  IMAGE_TAG: ${{ github.run_attempt }}
+
 jobs:
   deploy:
     name: Deploy
@@ -30,13 +36,37 @@ jobs:
 
       - name: Build, tag, and push the image to Amazon ECR
         id: build-image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: front-delivery
-          IMAGE_TAG: ${{ github.run_attempt }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}} .
+          docker tag ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}} ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}
 
           echo "Pushing image to ECR..."
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}
+
+      # kustomize 명령을 가져온다.
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+
+      - name: Checkout kustomize repository
+        uses: actions/checkout@v2
+        with:
+          # kubernetes 설정정보 저장소
+          repository: DGU2023xcapstone-parcel/exqress-kubernetes # k8s yaml 파일이 있는 repo
+          ref: main # branch 이름
+          # 다른 저장소에 push 하려면 Personal Access Token이 필요.
+          token: ${{ secrets.ACTION_TOKEN }}
+          path: exqress-kubernetes # 최상위 경로로 repository와 동일하게 설정
+
+      # 새 이미지 버전으로 파일 수정
+      - name: Update Kubernetes resources
+        run: |
+          sed -i.bak "s/image:.*/image: ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}/g" front-delivery-deploy.yaml
+          cat front-delivery-deploy.yaml
+
+      # 수정된 파일 commit & push
+      - name: Commit files
+        run: |
+          cd exqress-kubernetes
+          git add .
+          git commit -am "Update image tag ${{env.IMAGE_TAG}}"
+          git push -u origin main
