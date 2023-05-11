@@ -6,6 +6,7 @@ interface InfoContentProps {
   invoiceNo: string;
   name: string;
   company: string;
+  state: string;
   onClick: () => void;
 }
 
@@ -15,10 +16,13 @@ const InfoContent = ({
   invoiceNo,
   name,
   company,
+  state,
   onClick,
 }: InfoContentProps) => {
+  const isActivate = state !== "done";
+
   return (
-    <style.Wrapper onClick={onClick}>
+    <style.Wrapper>
       <div>
         <style.Text isBig={false} isDark>
           {date}
@@ -33,7 +37,13 @@ const InfoContent = ({
           {company}
         </style.Text>
       </div>
-      <style.Button>배송완료</style.Button>
+      <style.Button
+        disabled={!isActivate}
+        isActivate={isActivate}
+        onClick={onClick}
+      >
+        {isActivate ? "배송 중" : "배송 완료"}
+      </style.Button>
     </style.Wrapper>
   );
 };

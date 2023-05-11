@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
     const { colors } = theme;
     return css`
       height: 79px;
-      width: 115%;
+      width: 100%;
       bottom: 0;
 
       display: flex;

@@ -1,12 +1,12 @@
 import { ChangeEvent } from "react";
-import { InfoType } from "@/pages/Info";
 import StateRadioBtn from "@/components/pages/info/state-radio-btn";
 import InfoContent from "@/components/pages/info/info-content";
 import * as style from "./InfoTemplate.style";
+import { InfoType } from "@/types/info";
 
 const STATE_LIST = [
   { text: "전체", inputValue: "all" },
-  { text: "배송완료", inputValue: "finish" },
+  { text: "배송완료", inputValue: "done" },
   { text: "배송시작", inputValue: "start" },
 ];
 
@@ -46,8 +46,9 @@ const InfoTemplate = ({
             date={info.date}
             productName={info.productName}
             invoiceNo={info.invoiceNo}
-            name={info.name}
+            name={info.receiver}
             company={info.company}
+            state={info.state}
             onClick={onClick}
             key={info.invoiceNo}
           />

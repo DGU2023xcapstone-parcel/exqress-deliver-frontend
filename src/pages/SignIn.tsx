@@ -1,11 +1,14 @@
 import { ChangeEvent, useState } from "react";
-import SignInTemplate from "../components/template/signin";
+import { useSignIn } from "@/hooks/useSignIn";
+import { SignInInputType } from "@/types/sign";
+import SignInTemplate from "@/components/template/signin";
 
 const SignIn = () => {
-  const [signInValue, setSignInValue] = useState({
+  const [signInValue, setSignInValue] = useState<SignInInputType>({
     id: "",
     password: "",
   });
+  const { handleSignIn } = useSignIn();
 
   const handleSignInValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSignInValue({
@@ -13,16 +16,13 @@ const SignIn = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = () => {
-    console.log("로그인");
-  };
 
   return (
     <SignInTemplate
       id={signInValue.id}
       password={signInValue.password}
       onChange={handleSignInValue}
-      onClick={handleSubmit}
+      onClick={() => handleSignIn(signInValue)}
     />
   );
 };

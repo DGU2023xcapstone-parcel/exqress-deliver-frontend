@@ -11,14 +11,18 @@ const AppRouter = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="signin" element={<SignIn />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="scan">
-              <Route path="" element={<Scan />} />
-              <Route path="result" element={<ScanResult />} />
+          <Route path="/">
+            <Route element={<Layout isActivate />}>
+              <Route path="" element={<Info />}></Route>
+              <Route path="scan">
+                <Route path="" element={<Scan />} />
+                <Route path="result" element={<ScanResult />} />
+              </Route>
             </Route>
-            <Route path="info" element={<Info />}></Route>
+            <Route element={<Layout isActivate={false} />}>
+              <Route path="signin" element={<SignIn />} />
+              <Route path="signup" element={<SignUp />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

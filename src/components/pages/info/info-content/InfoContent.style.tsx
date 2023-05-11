@@ -5,6 +5,10 @@ interface TextState {
   isBig: boolean;
   isDark: boolean;
 }
+interface ButtonState {
+  isActivate: boolean;
+}
+
 export const Wrapper = styled.div`
   ${({ theme }) => {
     const { colors } = theme;
@@ -33,7 +37,18 @@ export const Text = styled.div<TextState>`
   }}
 `;
 
-export const Button = styled.button`
-  width: 102px;
-  height: 26px;
+export const Button = styled.button<ButtonState>`
+  ${({ theme, isActivate }) => {
+    const { colors } = theme;
+    return css`
+      width: 102px;
+      height: 26px;
+
+      color: ${colors.white};
+
+      background-color: ${isActivate ? colors.main : colors.gray100};
+
+      cursor: pointer;
+    `;
+  }}
 `;

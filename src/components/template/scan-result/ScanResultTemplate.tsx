@@ -1,13 +1,13 @@
+import { InfoType } from "@/types/info";
 import ResultList from "@/components/pages/scan/result-list";
-import { resultType } from "@/types/types";
 import * as style from "./ScanResultTemplate.style";
 
 export interface ScanResultTemplateProps {
-  resultList: resultType;
+  infoData: InfoType;
 }
-const ScanResultTemplate = ({ resultList }: ScanResultTemplateProps) => (
+const ScanResultTemplate = ({ infoData }: ScanResultTemplateProps) => (
   <style.Wrapper>
-    <ResultList resultList={resultList} />
+    <ResultList infoData={infoData} />
   </style.Wrapper>
 );
 

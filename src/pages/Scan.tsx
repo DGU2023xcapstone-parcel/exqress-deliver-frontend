@@ -1,20 +1,25 @@
 import { useState } from "react";
 import ScanTemplate from "@/components/template/scan";
+import { useGetScanResult } from "@/hooks/useGetScanResult";
+import { useNavigate } from "react-router-dom";
 
 const Scan = () => {
-  const [result, setResult] = useState("no result");
-  const [error, setError] = useState(null);
+  const [result, setResult] = useState("");
+  const navigate = useNavigate();
 
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
+  const { data } = useGetScanResult({ code: result });
 
   const handleError = (error: any) => {
-    setError(error.message);
+    console.log(error);
   };
-  const handleScan = (data: string | null) => {
-    if (data) {
-      setResult(data);
+  const handleScan = (result: string | null) => {
+    if (result) {
+      setResult(result);
+      navigate("/scan/result", {
+        state: {
+          infoData: data,
+        },
+      });
     }
   };
 

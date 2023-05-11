@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { SizeType } from "@/types/types";
+import { SizeType } from "@/types/style";
 import * as style from "./Input.style";
 
 interface InputProps {

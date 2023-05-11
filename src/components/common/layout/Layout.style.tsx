@@ -6,11 +6,5 @@ export const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: start;
   align-items: center;
-`;
-
-export const Box = styled.div`
-  height: 100%;
-  width: 90%;
 `;

@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Box = styled.div`
-  height: 60%;
-  width: 100%;
+  height: 70%;
+  width: 90%;
 
   display: flex;
   flex-direction: column;

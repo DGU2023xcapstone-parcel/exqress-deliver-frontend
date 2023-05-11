@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   height: 140px;
-  width: 100%;
+  width: 90%;
   margin-top: 30px;
   margin-bottom: 30px;
 
@@ -27,4 +27,20 @@ export const Inner = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+export const BtnBox = styled.div`
+  width: 300px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const Img = styled.img`
+  width: 40px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
 `;

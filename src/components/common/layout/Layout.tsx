@@ -1,19 +1,18 @@
-// import { useRecoilState } from "recoil";
 import { Outlet } from "react-router-dom";
-// import { authState } from "@/recoil/auth";
 import Navigation from "@/components/common/navigation";
 import * as style from "./Layout.style";
+// import { useRefreshToken } from "@/hooks/useRefreshToken";
 
-const Layout = () => {
-  // const [isauth] = useRecoilState(authState);
+interface LayoutProps {
+  isActivate: boolean;
+}
+const Layout = ({ isActivate }: LayoutProps) => {
+  // useRefreshToken();
 
   return (
     <style.Wrapper>
-      <style.Box>
-        <Outlet />
-      </style.Box>
-      <Navigation />
-      {/* {isauth && <Navigation />} */}
+      <Outlet />
+      {isActivate && <Navigation />}
     </style.Wrapper>
   );
 };

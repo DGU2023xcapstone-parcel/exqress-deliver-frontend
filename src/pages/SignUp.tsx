@@ -1,16 +1,10 @@
 import { ChangeEvent, useState } from "react";
+import { useSignUp } from "@/hooks/useSignUp";
+import { SignUpInputType } from "@/types/sign";
 import SignUpTemplate from "@/components/template/signup";
 
-export interface SignUpStateType {
-  id: string;
-  password: string;
-  name: string;
-  company: string;
-  phone: string;
-  email: string;
-}
 const SignUp = () => {
-  const [signupState, setSignupState] = useState<SignUpStateType>({
+  const [signupValue, setSignupValue] = useState<SignUpInputType>({
     id: "",
     password: "",
     name: "",
@@ -18,21 +12,20 @@ const SignUp = () => {
     phone: "",
     email: "",
   });
+  const { handleSignUp } = useSignUp();
 
   const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
-    setSignupState({
-      ...signupState,
+    setSignupValue({
+      ...signupValue,
       [e.target.name]: e.target.value,
     });
   };
-  const handleSumitSignup = () => {
-    console.log("submit");
-  };
+
   return (
     <SignUpTemplate
-      signupState={signupState}
+      signupState={signupValue}
       onChange={handleSignupState}
-      onClick={handleSumitSignup}
+      onClick={() => handleSignUp(signupValue)}
     />
   );
 };
