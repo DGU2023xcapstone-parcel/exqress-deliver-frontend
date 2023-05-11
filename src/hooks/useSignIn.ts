@@ -6,6 +6,10 @@ import { signIn } from "@/services/user";
 import { authState } from "@/recoil/auth";
 import { queryKeys } from "@/react-query/constants";
 
+/**
+ * 로그인 요청하는 hook
+ * @returns 로그인 핸들러 반환
+ */
 export const useSignIn = () => {
   const navigate = useNavigate();
   const [, setIsAuth] = useRecoilState(authState);

@@ -4,6 +4,10 @@ import { useMutation } from "@tanstack/react-query";
 import { signUp } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
 
+/**
+ * 회원가입 hook
+ * @returns 회원가입 핸들러 반환
+ */
 export const useSignUp = () => {
   const navigate = useNavigate();
 

@@ -7,6 +7,10 @@ import { authState } from "@/recoil/auth";
 import { setAccessToken } from "@/apis/API";
 import { queryKeys } from "@/react-query/constants";
 
+/**
+ * 로그아웃 hook
+ * @returns 로그아웃 핸들러 반환
+ */
 export const useSignOut = () => {
   const navigate = useNavigate();
   const [, setIsAuth] = useRecoilState(authState);
