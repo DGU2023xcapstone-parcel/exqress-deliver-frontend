@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, RefObject } from "react";
 import StateRadioBtn from "@/components/pages/info/state-radio-btn";
 import InfoContent from "@/components/pages/info/info-content";
 import * as style from "./InfoTemplate.style";
@@ -12,15 +12,19 @@ const STATE_LIST = [
 
 export interface InfoTemplateProps {
   radioValue: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   infoList: InfoType[];
+  isScroll: boolean;
+  contentRef: RefObject<HTMLDivElement>;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
 }
 const InfoTemplate = ({
   radioValue,
   infoList,
-  onClick,
+  isScroll,
+  contentRef,
   onChange,
+  onClick,
 }: InfoTemplateProps) => {
   return (
     <style.Wrapper>
@@ -40,7 +44,7 @@ const InfoTemplate = ({
         </style.RadioBox>
         <style.Line />
       </style.TitleBox>
-      <style.InfoBox>
+      <style.InfoBox isScroll={isScroll} ref={contentRef}>
         {infoList.map((info) => (
           <InfoContent
             date={info.date}

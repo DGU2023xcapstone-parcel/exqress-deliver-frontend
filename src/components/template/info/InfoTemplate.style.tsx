@@ -1,6 +1,10 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
+interface ScrollState {
+  isScroll: boolean;
+}
+
 export const Wrapper = styled.div`
   height: 100%;
   width: 90%;
@@ -26,11 +30,18 @@ export const RadioBox = styled.div`
   justify-content: space-around;
 `;
 
-export const InfoBox = styled.div`
-  height: 500px;
-  width: 100%;
+export const InfoBox = styled.div<ScrollState>`
+  ${({ isScroll }) => {
+    return css`
+      height: 500px;
+      width: 100%;
 
-  overflow: auto;
+      overflow: auto;
+
+      touch-action: ${isScroll ? "pan-y" : "none"};
+      overscroll-behavior: contain;
+    `;
+  }}
 `;
 
 export const Title = styled.div`
