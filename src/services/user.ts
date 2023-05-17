@@ -1,8 +1,4 @@
-import {
-  SignInInputType,
-  SignInOutputType,
-  SignUpInputType,
-} from "@/types/sign";
+import { SignInInputType, SignUpInputType } from "@/types/sign";
 import { postPublicApi } from "@/apis/publicApi";
 import { getAuthApi, postAuthApi } from "@/apis/authApi";
 
@@ -18,7 +14,7 @@ import { getAuthApi, postAuthApi } from "@/apis/authApi";
  */
 export const signUp = async (props: SignUpInputType) => {
   const response = await postPublicApi<undefined, SignUpInputType>(
-    "/signup",
+    "/signUp",
     props
   );
 
@@ -32,10 +28,9 @@ export const signUp = async (props: SignUpInputType) => {
  * @returns 성공 시 JWT 액세스 토큰 인계, 실패 시 에러 객체 반환
  */
 export const signIn = async (props: SignInInputType) => {
-  const response = await postAuthApi<SignInOutputType, SignInInputType>(
-    "/signin",
-    { ...props }
-  );
+  const response = await postAuthApi<any, SignInInputType>("/signIn", {
+    ...props,
+  });
 
   return response;
 };
@@ -45,7 +40,7 @@ export const signIn = async (props: SignInInputType) => {
  * @returns 성공 시 header 비움
  */
 export const signOut = async () => {
-  const response = await postAuthApi<undefined, undefined>("/signout");
+  const response = await postAuthApi<undefined, undefined>("/signOut");
 
   return response;
 };
@@ -55,7 +50,7 @@ export const signOut = async () => {
  * @returns 성공 시
  */
 export const refreshToken = async () => {
-  const response = await getAuthApi<SignInOutputType>("/refresh");
+  const response = await getAuthApi<any>("/refresh");
 
   return response;
 };

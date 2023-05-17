@@ -1,8 +1,5 @@
-import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
-import axios, { AxiosError, isAxiosError } from "axios";
+import axios, { isAxiosError } from "axios";
 import { API_URL } from "@/constants/url";
-import { authState } from "@/recoil/auth";
 import { CommonResponse, CustomAxiosInterface } from "./types";
 
 /**
@@ -19,31 +16,24 @@ export const setAccessToken = (token: string) => {
  * @param error axios 에러 혹은 알수없는 에러
  * @param error 에러 객체 반환
  */
-const onError = (error: AxiosError | Error): Promise<AxiosError> => {
-  const navigate = useNavigate();
-  const [, setIsAuth] = useRecoilState(authState);
-
+const onError = (error: any) => {
   if (isAxiosError<CommonResponse<any>>(error)) {
     const { status, message } = error.response!.data;
-
     switch (status) {
       // 그냥 데이터 문제
-      case 400:
+      case "400":
         console.log(message);
         break;
       // 권한 x
-      case 401:
+      case "401":
         setAccessToken("");
-        setIsAuth(false);
-        navigate({
-          pathname: "signin",
-        });
-        break;
-      // 이미 존재
-      case 409:
         console.log(message);
         break;
-      case 500:
+      // 이미 존재
+      case "409":
+        console.log(message);
+        break;
+      case "500":
         // 서버 문제
         console.log(message);
         break;

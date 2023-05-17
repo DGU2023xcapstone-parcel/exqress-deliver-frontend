@@ -7,15 +7,12 @@ const style = css`
     padding: 0;
     margin: 0px auto;
     touch-action: none;
-
     -webkit-text-size-adjust: none;
+    overflow: hidden;
   }
-  select,
-  input,
-  button,
-  textarea {
-    border: 0;
-    outline: 0 !important;
+  .root {
+    position: fixed;
+    overflow: hidden;
   }
 `;
 

@@ -1,17 +1,11 @@
 export interface SignUpInputType {
-  id: string;
-  password: string;
-  name: string;
-  company: string;
-  phone: string;
   email: string;
+  name: string;
+  password: string;
+  phoneNumber: string;
 }
 
 export interface SignInInputType {
-  id: string;
+  email: string;
   password: string;
-}
-
-export interface SignInOutputType {
-  token: string;
 }

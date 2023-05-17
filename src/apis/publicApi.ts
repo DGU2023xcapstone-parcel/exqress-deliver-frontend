@@ -15,6 +15,7 @@ export const getpublicApi = async <T>(
   const response = await publicApi
     .get<CommonResponse<T>>(url, config)
     .then((res) => res.data);
+
   return response;
 };
 
@@ -31,7 +32,8 @@ export const postPublicApi = async <T, D>(
   config?: AxiosRequestConfig
 ) => {
   const response = await publicApi
-    .post<CommonResponse<T>, D>(url, data, config)
+    .post<CommonResponse<T>>(url, data, config)
     .then((res) => res.data);
+
   return response;
 };

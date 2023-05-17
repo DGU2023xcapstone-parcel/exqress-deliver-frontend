@@ -5,10 +5,11 @@ import SignInTemplate from "@/components/template/signin";
 
 const SignIn = () => {
   const [signInValue, setSignInValue] = useState<SignInInputType>({
-    id: "",
+    email: "",
     password: "",
   });
-  const { handleSignIn } = useSignIn();
+
+  const { handleSignIn } = useSignIn(signInValue);
 
   const handleSignInValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSignInValue({
@@ -19,10 +20,9 @@ const SignIn = () => {
 
   return (
     <SignInTemplate
-      id={signInValue.id}
-      password={signInValue.password}
+      signInValue={signInValue}
       onChange={handleSignInValue}
-      onClick={() => handleSignIn(signInValue)}
+      onClick={handleSignIn}
     />
   );
 };

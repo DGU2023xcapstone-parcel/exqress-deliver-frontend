@@ -15,6 +15,7 @@ export const getAuthApi = async <T>(
   const response = await authApi
     .get<CommonResponse<T>>(url, config)
     .then((res) => res.data);
+
   return response;
 };
 
@@ -31,7 +32,8 @@ export const postAuthApi = async <T, D>(
   config?: AxiosRequestConfig
 ) => {
   const response = await authApi
-    .post<CommonResponse<T>, D>(url, data, config)
+    .post<CommonResponse<T>>(url, data, config)
     .then((res) => res.data);
+
   return response;
 };

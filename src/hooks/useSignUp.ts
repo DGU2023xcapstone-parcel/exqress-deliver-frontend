@@ -3,26 +3,28 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { signUp } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
+import { SignUpInputType } from "@/types/sign";
 
 /**
  * 회원가입 hook
  * @returns 회원가입 핸들러 반환
  */
-export const useSignUp = () => {
+export const useSignUp = (props: SignUpInputType) => {
   const navigate = useNavigate();
 
-  const { mutate: handleSignUp, isLoading } = useMutation(
-    queryKeys.user,
-    signUp
-  );
+  const { mutate, isSuccess } = useMutation(queryKeys.user, signUp);
 
-  // todo isLoading -> isSuccess
+  const handleSignUp = () => {
+    mutate(props);
+  };
+
+  // // todo isLoading -> isSuccess
   useEffect(() => {
-    if (isLoading)
+    if (isSuccess)
       navigate({
         pathname: "/signin",
       });
-  }, [isLoading]);
+  }, [isSuccess]);
 
   return { handleSignUp };
 };

@@ -8,7 +8,7 @@ export const Wrapper = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: sticky;
+  position: absolute;
 
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.18);
   border-radius: 30px 30px 0 0;

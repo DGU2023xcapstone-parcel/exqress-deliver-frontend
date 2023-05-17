@@ -1,19 +1,18 @@
 import { ChangeEvent } from "react";
 import Input from "@/components/common/input";
 import MainLogo from "@/assets/mainLogo.svg";
+import { SignInInputType } from "@/types/sign";
 import SubmitBtn from "@/components/pages/sign/submit-btn";
 import SignupBtn from "@/components/pages/sign/signup-btn";
 import * as style from "./SignInTemplate.style";
 
 export interface SignInTemplateProps {
-  id: string;
-  password: string;
+  signInValue: SignInInputType;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
 }
 const SignInTemplate = ({
-  id,
-  password,
+  signInValue,
   onChange,
   onClick,
 }: SignInTemplateProps) => (
@@ -22,14 +21,14 @@ const SignInTemplate = ({
     <style.Box>
       <style.Inner>
         <Input
-          value={id}
-          name="id"
-          placeHolder="아이디"
+          value={signInValue.email}
+          name="email"
+          placeHolder="이메일"
           sizeType="Big"
           onChange={onChange}
         />
         <Input
-          value={password}
+          value={signInValue.password}
           name="password"
           placeHolder="비밀번호"
           sizeType="Big"

@@ -1,2 +1,2 @@
 export const API_URL =
-  "https:// k8s-default-backgate-f5a5b6095e-1322362976.ap-northeast-2.elb.amazonaws.com" as const;
+  "http://k8s-default-backdeli-ecf39846be-205392414.ap-northeast-2.elb.amazonaws.com";
