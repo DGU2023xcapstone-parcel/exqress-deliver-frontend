@@ -10,6 +10,7 @@ const Navigation = () => {
   const location = useLocation();
   const isSign =
     location.pathname === "/signin" || location.pathname === "/signup";
+
   return (
     <>
       {!isSign && (
