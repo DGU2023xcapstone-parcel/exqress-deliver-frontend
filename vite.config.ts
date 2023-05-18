@@ -22,14 +22,5 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    proxy: {
-      "/api": {
-        target:
-          "http://k8s-default-backdeli-ecf39846be-65120739.ap-northeast-2.elb.amazonaws.com",
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
   plugins: [react(), tsconfigPaths()],
 });
