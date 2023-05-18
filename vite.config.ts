@@ -26,7 +26,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          "http://k8s-default-backdeli-ecf39846be-65120739.ap-northeast-2.elb.amazonaws.com",
+          "https://k8s-default-backdeli-ecf39846be-65120739.ap-northeast-2.elb.amazonaws.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
         secure: false,
