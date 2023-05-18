@@ -75,7 +75,6 @@ export const publicApi: CustomAxiosInterface = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
 });
 publicApi.interceptors.response.use((response) => {
   return response;
