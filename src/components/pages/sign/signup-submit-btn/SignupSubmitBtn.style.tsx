@@ -1,8 +1,11 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.nav`
-  ${({ theme }) => {
+interface WrapperState {
+  isActivate: boolean;
+}
+export const Wrapper = styled.button<WrapperState>`
+  ${({ theme, isActivate }) => {
     const { colors } = theme;
     return css`
       height: 79px;
@@ -16,7 +19,7 @@ export const Wrapper = styled.nav`
 
       box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.18);
       border-radius: 30px 30px 0 0;
-      background-color: ${colors.main};
+      background-color: ${isActivate ? colors.main : colors.gray300};
     `;
   }}
 `;

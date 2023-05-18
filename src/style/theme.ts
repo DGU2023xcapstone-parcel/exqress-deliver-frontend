@@ -5,6 +5,7 @@ const colors = {
   white: "#ffffff",
   gray100: "#9C9C9C",
   gray300: "#86888A",
+  red: "#FF6442",
 };
 
 const fontWeight = {
