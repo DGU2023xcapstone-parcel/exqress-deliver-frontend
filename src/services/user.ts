@@ -17,7 +17,7 @@ export const signUp = async (props: SignUpInputType) => {
     "/signUp",
     props
   );
-
+  console.log(response);
   return response;
 };
 
