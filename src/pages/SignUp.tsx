@@ -35,19 +35,21 @@ const SignUp = () => {
       e.target.name as SignUpType,
       e.target.value
     );
+    const newValid = {
+      ...signUpValidate,
+      [e.target.name]: valid,
+    };
+
     setSignUpValue({
       ...signUpValue,
       [e.target.name]: e.target.value,
-    });
-    setSignUpValidate({
-      ...signUpValidate,
-      [e.target.name]: valid,
     });
     setSignUpValideMessage({
       ...signUpValidMessage,
       [e.target.name]: message,
     });
-    setIsSignUpActivate(validateAll(signUpValidate));
+    setSignUpValidate(newValid);
+    setIsSignUpActivate(validateAll(newValid));
   };
 
   return (
