@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import InfoTemplate from "@/components/template/info";
 import { useGetInfoList } from "@/hooks/useGetInfoList";
-import { useHandleScroll } from "../hooks/useHandleScroll";
+import { useHandleScroll } from "@/hooks/useHandleScroll";
 
 const Info = () => {
   const [radioValue, setRadioValue] = useState("all");

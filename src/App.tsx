@@ -6,6 +6,7 @@ import { theme } from "./style/theme";
 import AppRouter from "./routes/AppRouter";
 import GlobalStyle from "./style/globalStyle";
 import Navigation from "./components/common/navigation";
+import Loading from "./components/common/loading";
 
 const queryClient = new QueryClient();
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <ReactQueryDevtools initialIsOpen={false} />
           <GlobalStyle />
           <BrowserRouter>
+            <Loading />
             <AppRouter />
             <Navigation />
           </BrowserRouter>
