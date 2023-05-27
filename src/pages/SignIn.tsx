@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from "react";
+
+import SignInTemplate from "@/components/template/signin";
 import { useSignIn } from "@/hooks/useSignIn";
 import { SignInInputType } from "@/types/sign";
-import SignInTemplate from "@/components/template/signin";
 
 const SignIn = () => {
   const [signInValue, setSignInValue] = useState<SignInInputType>({

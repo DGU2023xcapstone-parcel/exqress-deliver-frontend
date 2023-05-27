@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+
 import { SizeType } from "@/types/style";
 
 interface SizeProps {

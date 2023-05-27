@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import "./PageTransitionStyles.css";
+
+import "./RouteTransition.style.css";
 
 interface RouteTransitionProps {
   path: string;

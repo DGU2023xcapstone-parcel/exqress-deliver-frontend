@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import { useSignUp } from "@/hooks/useSignUp";
-import { SignUpInputType, SignUpType, SignUpValidateType } from "@/types/sign";
+
 import SignUpTemplate from "@/components/template/signup";
+import { useSignUp } from "@/hooks/useSignUp";
 import { validateAll, validateSignUp } from "@/utils/valid";
+import { SignUpInputType, SignUpType, SignUpValidateType } from "@/types/sign";
 
 const SignUp = () => {
   const [signUpValue, setSignUpValue] = useState<SignUpInputType>({

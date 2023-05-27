@@ -1,8 +1,10 @@
 import { ChangeEvent, RefObject } from "react";
+
 import StateRadioBtn from "@/components/pages/info/state-radio-btn";
 import InfoContent from "@/components/pages/info/info-content";
-import * as style from "./InfoTemplate.style";
 import { InfoType } from "@/types/info";
+import { getDate } from "@/utils/date";
+import * as style from "./InfoTemplate.style";
 
 const STATE_LIST = [
   { text: "전체", inputValue: "all" },
@@ -16,7 +18,7 @@ export interface InfoTemplateProps {
   isScroll: boolean;
   contentRef: RefObject<HTMLDivElement>;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClick: () => void;
+  onClick: (props: Pick<InfoType, "invoiceNo">) => void;
 }
 const InfoTemplate = ({
   radioValue,
@@ -47,12 +49,13 @@ const InfoTemplate = ({
       <style.InfoBox isScroll={isScroll} ref={contentRef}>
         {infoList.map((info) => (
           <InfoContent
-            date={info.date}
+            date={getDate(info.createdDate)}
             productName={info.productName}
             invoiceNo={info.invoiceNo}
-            name={info.receiver}
-            company={info.company}
-            state={info.state}
+            name={info.receiverName}
+            phoneNumber={info.receiverPhoneNumber}
+            isComplete={info.isComplete === "false"}
+            address={info.address}
             onClick={onClick}
             key={info.invoiceNo}
           />

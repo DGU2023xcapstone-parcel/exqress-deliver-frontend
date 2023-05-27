@@ -9,8 +9,8 @@ import { CommonResponse, CustomAxiosInterface } from "./types";
  */
 export const setAccessToken = (token: string) => {
   authApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  console.log(API_URL);
 };
-
 /**
  * axios error 핸들링
  * @param error axios 에러 혹은 알수없는 에러
@@ -45,6 +45,7 @@ const onError = (error: any) => {
     // 여긴 그냥 문제
     console.log("알수없는 문제 발생");
   }
+  console.log(`ERROR: ${error}`);
   return Promise.reject(error);
 };
 
@@ -58,13 +59,14 @@ export const authApi: CustomAxiosInterface = axios.create({
   withCredentials: true,
 });
 authApi.interceptors.response.use((response) => {
-  const { token } = response.data;
+  const { accessToken } = response.data;
+  console.log(`Call AUTH API = `, response.data.accessToken);
 
-  if (!!!token) {
-    setAccessToken(token);
+  if (accessToken) {
+    console.log(`SET TOKEN ${accessToken}`);
+    setAccessToken(accessToken);
   }
 
-  console.log(`Call AUTH API = `, response.config.url);
   return response;
 }, onError);
 
@@ -77,5 +79,6 @@ export const publicApi: CustomAxiosInterface = axios.create({
   },
 });
 publicApi.interceptors.response.use((response) => {
+  console.log(`Call PUBLIC API = `, response);
   return response;
 }, onError);

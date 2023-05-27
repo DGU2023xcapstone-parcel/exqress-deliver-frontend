@@ -1,7 +1,8 @@
 import { ChangeEvent } from "react";
+
 import Input from "@/components/common/input";
-import { SignUpInputType, SignUpValidateType } from "@/types/sign";
 import SignupSubmitBtn from "@/components/pages/sign/signup-submit-btn";
+import { SignUpInputType, SignUpValidateType } from "@/types/sign";
 import * as style from "./SignUpTemplate.style";
 
 export interface SignUpTemplateProps {

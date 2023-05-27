@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+
 import { signUp } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
 import { SignUpInputType } from "@/types/sign";

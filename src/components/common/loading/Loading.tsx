@@ -1,5 +1,6 @@
-import Spinner from "@/assets/spinner.gif";
 import { useIsFetching, useIsMutating } from "@tanstack/react-query";
+
+import Spinner from "@/assets/spinner.gif";
 import * as style from "./Loading.style";
 
 const Loading = () => {

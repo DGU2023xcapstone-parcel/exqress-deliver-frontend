@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => {
     const { colors } = theme;
     return css`
-      height: 80px;
+      height: 120px;
       width: 100%;
 
       display: flex;

@@ -1,14 +1,16 @@
 import { ThemeProvider } from "@emotion/react";
 import { BrowserRouter } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { theme } from "./style/theme";
+import { QueryClientProvider } from "@tanstack/react-query";
+
 import AppRouter from "./routes/AppRouter";
+import { theme } from "./style/theme";
 import GlobalStyle from "./style/globalStyle";
+import { queryClient } from "./react-query/queryClient";
 import Navigation from "./components/common/navigation";
 import Loading from "./components/common/loading";
+import ModalPortal from "./components/common/modal-portal";
 
-const queryClient = new QueryClient();
 function App() {
   return (
     <>
@@ -20,6 +22,7 @@ function App() {
             <Loading />
             <AppRouter />
             <Navigation />
+            <ModalPortal />
           </BrowserRouter>
         </QueryClientProvider>
       </ThemeProvider>

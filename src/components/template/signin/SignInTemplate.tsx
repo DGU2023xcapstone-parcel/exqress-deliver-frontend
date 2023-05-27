@@ -1,9 +1,10 @@
 import { ChangeEvent } from "react";
-import Input from "@/components/common/input";
+
 import MainLogo from "@/assets/mainLogo.svg";
-import { SignInInputType } from "@/types/sign";
+import Input from "@/components/common/input";
 import SubmitBtn from "@/components/pages/sign/submit-btn";
 import SignupBtn from "@/components/pages/sign/signup-btn";
+import { SignInInputType } from "@/types/sign";
 import * as style from "./SignInTemplate.style";
 
 export interface SignInTemplateProps {

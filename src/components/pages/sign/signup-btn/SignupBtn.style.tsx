@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   width: 100%;

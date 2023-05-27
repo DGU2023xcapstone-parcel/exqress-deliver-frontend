@@ -1,3 +1,4 @@
+import { InfoType } from "@/types/info";
 import * as style from "./InfoContent.style";
 
 interface InfoContentProps {
@@ -5,9 +6,10 @@ interface InfoContentProps {
   productName: string;
   invoiceNo: string;
   name: string;
-  company: string;
-  state: string;
-  onClick: () => void;
+  phoneNumber: string;
+  isComplete: boolean;
+  address: string;
+  onClick: (props: Pick<InfoType, "invoiceNo">) => void;
 }
 
 const InfoContent = ({
@@ -15,37 +17,37 @@ const InfoContent = ({
   productName,
   invoiceNo,
   name,
-  company,
-  state,
+  phoneNumber,
+  isComplete,
+  address,
   onClick,
-}: InfoContentProps) => {
-  const isActivate = state !== "done";
-
-  return (
-    <style.Wrapper>
-      <div>
-        <style.Text isBig={false} isDark>
-          {date}
-        </style.Text>
-        <style.Text isBig isDark>
-          {productName}
-        </style.Text>
-        <style.Text isBig={false} isDark={false}>
-          {invoiceNo} {name}
-        </style.Text>
-        <style.Text isBig={false} isDark>
-          {company}
-        </style.Text>
-      </div>
-      <style.Button
-        disabled={!isActivate}
-        isActivate={isActivate}
-        onClick={onClick}
-      >
-        {isActivate ? "배송 중" : "배송 완료"}
-      </style.Button>
-    </style.Wrapper>
-  );
-};
+}: InfoContentProps) => (
+  <style.Wrapper>
+    <div>
+      <style.Text isBig={false} isDark>
+        {date}
+      </style.Text>
+      <style.Text isBig isDark>
+        {productName}
+      </style.Text>
+      <style.Text isBig={false} isDark={false}>
+        {invoiceNo} {name}
+      </style.Text>
+      <style.Text isBig={false} isDark>
+        {phoneNumber}
+      </style.Text>
+      <style.Text isBig={false} isDark>
+        {address}
+      </style.Text>
+    </div>
+    <style.Button
+      disabled={!isComplete}
+      isActivate={isComplete}
+      onClick={() => onClick({ invoiceNo })}
+    >
+      {isComplete ? "배송 중" : "배송 완료"}
+    </style.Button>
+  </style.Wrapper>
+);
 
 export default InfoContent;

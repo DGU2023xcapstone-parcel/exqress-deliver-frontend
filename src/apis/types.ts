@@ -9,7 +9,7 @@ export interface CommonResponse<T> {
   status: string;
   message: string;
   data: T;
-  token: string;
+  accessToken: string;
 }
 
 export interface CustomAxiosInterface extends AxiosInstance {

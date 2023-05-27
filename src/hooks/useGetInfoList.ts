@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { INFO_LIST } from "../mock";
+
 import { getInfoList } from "@/services/info";
 import { queryKeys } from "@/react-query/constants";
 
@@ -8,15 +8,11 @@ import { queryKeys } from "@/react-query/constants";
  * @returns info 리스트
  */
 export const useGetInfoList = () => {
-  const {
-    // data = INFO_LIST,
-    // isLoading,
-    // isSuccess,
-    // isError,
-  } = useQuery(queryKeys.info, getInfoList, { enabled: false });
-
+  const { data = [] } = useQuery(queryKeys.info, getInfoList, {
+    enabled: true,
+  });
+  console.log(data);
   return {
-    data: INFO_LIST,
-    // , isLoading, isSuccess, isError
+    data,
   };
 };
