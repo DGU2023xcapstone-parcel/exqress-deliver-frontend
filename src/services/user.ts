@@ -17,7 +17,7 @@ export const signUp = async (props: SignUpInputType) => {
     "/signUp",
     props
   );
-  console.log(response);
+
   return response;
 };
 
@@ -51,6 +51,6 @@ export const signOut = async () => {
  */
 export const refreshToken = async () => {
   const response = await postAuthApi<any, any>("/reissue");
-  console.log(response);
+
   return response;
 };
