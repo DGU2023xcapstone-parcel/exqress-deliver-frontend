@@ -7,7 +7,7 @@ import { useHandleModal } from "@/hooks/useHandleModal";
 import * as style from "./ModalPortal.style";
 
 const ModalPortal = () => {
-  const [{ isOpen, content }] = useRecoilState(modalState);
+  const [{ isOpen, isSuccess, content }] = useRecoilState(modalState);
   const { handleCloseModal } = useHandleModal();
 
   if (isOpen) {
@@ -21,10 +21,14 @@ const ModalPortal = () => {
       }
     };
 
+    setTimeout(() => {
+      handleCloseModal();
+    }, 1500);
+
     return modalRoot && content
       ? createPortal(
           <style.Wrapper id="modal_overlay" onClick={closeModalByClick}>
-            <style.Box>{content}</style.Box>
+            <style.Box isSuccess={isSuccess}>{content}</style.Box>
           </style.Wrapper>,
           modalRoot
         )

@@ -22,7 +22,7 @@ export const useRefreshToken = () => {
       setIsAuth(true);
     },
     onError: () => {
-      handleOpenModal("kim");
+      handleOpenModal(false, "다시 로그인 헤주세요");
       navigate({
         pathname: "/signin",
       });

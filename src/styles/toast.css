@@ -1,0 +1,10 @@
+.custom-toast-width {
+  width: 300px;
+  top: 30px;
+  left: 15%;
+}
+
+.custom-toast-color {
+  background-color: blue;
+  color: white;
+}

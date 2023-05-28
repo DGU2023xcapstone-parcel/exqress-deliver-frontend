@@ -1,8 +1,8 @@
 import ScanTemplate from "@/components/template/scan";
-import { useGetScanResult } from "@/hooks/useGetScanResult";
+import { useScanQrCode } from "@/hooks/useGetScanResult";
 
 const Scan = () => {
-  const { result, handleScan } = useGetScanResult();
+  const { result, handleScan } = useScanQrCode();
 
   const handleError = (error: any) => {
     console.log(error);

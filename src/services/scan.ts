@@ -7,7 +7,7 @@ import { postAuthApi } from "@/apis/authApi";
  * @returns info 리스트
  */
 export const scanQrCode = async (props: ScanType) => {
-  const response = await postAuthApi<any, ScanType>("/scan", props);
+  const response = await postAuthApi<any, ScanType>("/qr/ready", props);
 
   return response;
 };

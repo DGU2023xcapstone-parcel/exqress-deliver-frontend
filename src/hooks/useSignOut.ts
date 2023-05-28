@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
@@ -5,7 +6,9 @@ import { useMutation } from "@tanstack/react-query";
 import { signOut } from "@/services/user";
 import { authState } from "@/recoil/auth";
 import { setAccessToken } from "@/apis/API";
+import { CommonResponse } from "@/apis/types";
 import { queryKeys } from "@/react-query/constants";
+import useCustomToast from "./useCustomToast";
 
 /**
  * 로그아웃 hook
@@ -16,8 +19,11 @@ export const useSignOut = () => {
   const [, setIsAuth] = useRecoilState(authState);
 
   const { mutate } = useMutation(queryKeys.user, signOut, {
+    onError: (error: AxiosError<CommonResponse<any>>) => {
+      useCustomToast("error", error.response?.data.message);
+    },
     onSuccess: () => {
-      console.log("success");
+      useCustomToast("success", "로그아웃 성공!");
       setIsAuth(false);
       setAccessToken("");
       navigate({

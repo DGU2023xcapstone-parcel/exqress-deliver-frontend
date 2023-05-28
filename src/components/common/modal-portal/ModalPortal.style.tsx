@@ -1,36 +1,43 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { css, keyframes } from "@emotion/react";
 
-export const Wrapper = styled.div`
-  ${({ theme }) => {
-    return css`
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      left: 0;
+interface ModalState {
+  isSuccess: Boolean;
+}
 
-      position: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background-color: ${theme.colors.black};
-      background: rgba(15, 15, 15, 0.7);
-      z-index: 999;
-    `;
-  }}
+const slideIn = keyframes`
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 `;
 
-export const Box = styled.div`
-  ${({ theme }) => {
-    return css`
-      width: 300px;
-      height: 200px;
+export const Wrapper = styled.div`
+  width: 100vw;
+  height: 30px;
+  top: 20px;
+  left: 0;
 
-      color: ${theme.colors.black};
-      background-color: ${theme.colors.white};
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: ${slideIn} 0.5s ease-in-out;
+`;
+
+export const Box = styled.div<ModalState>`
+  ${({ theme, isSuccess }) => {
+    return css`
+      width: 200px;
+      height: 30px;
+
+      color: ${theme.colors.white};
+      background-color: ${isSuccess ? theme.colors.main : theme.colors.red};
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 20px;
+      border-radius: 15px;
     `;
   }}
 `;

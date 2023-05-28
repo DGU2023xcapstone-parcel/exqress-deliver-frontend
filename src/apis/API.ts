@@ -45,6 +45,7 @@ const onError = (error: any) => {
     // 여긴 그냥 문제
     console.log("알수없는 문제 발생");
   }
+
   console.log(`ERROR: ${error}`);
   return Promise.reject(error);
 };

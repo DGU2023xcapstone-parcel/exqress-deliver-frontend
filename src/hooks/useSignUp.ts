@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { signUp } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
 import { SignUpInputType } from "@/types/sign";
+import { CommonResponse } from "@/apis/types";
+import useCustomToast from "./useCustomToast";
 
 /**
  * 회원가입 hook
@@ -13,19 +15,22 @@ import { SignUpInputType } from "@/types/sign";
 export const useSignUp = (props: SignUpInputType) => {
   const navigate = useNavigate();
 
-  const { mutate, isSuccess } = useMutation(queryKeys.user, signUp);
+  const { mutate } = useMutation(queryKeys.user, signUp, {
+    onError: (error: AxiosError<CommonResponse<any>>) => {
+      console.log(error);
+      useCustomToast("error", error.response?.data.message);
+    },
+    onSuccess() {
+      useCustomToast("success", "회원가입 성공");
+      navigate({
+        pathname: "/signin",
+      });
+    },
+  });
 
   const handleSignUp = () => {
     mutate(props);
   };
-
-  // // todo isLoading -> isSuccess
-  useEffect(() => {
-    if (isSuccess)
-      navigate({
-        pathname: "/signin",
-      });
-  }, [isSuccess]);
 
   return { handleSignUp };
 };

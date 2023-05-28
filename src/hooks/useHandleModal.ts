@@ -6,11 +6,11 @@ import { modalState } from "@/recoil/modal";
 export const useHandleModal = () => {
   const [, setModalState] = useRecoilState(modalState);
 
-  const handleOpenModal = (newContent: ReactNode) => {
-    setModalState({ isOpen: true, content: newContent });
+  const handleOpenModal = (isSuccess: boolean, content: ReactNode) => {
+    setModalState({ isOpen: true, isSuccess: isSuccess, content: content });
   };
   const handleCloseModal = () => {
-    setModalState({ isOpen: false, content: null });
+    setModalState({ isOpen: false, isSuccess: false, content: null });
   };
 
   return { handleOpenModal, handleCloseModal };
