@@ -3,12 +3,12 @@ import { createPortal } from "react-dom";
 import { useRecoilState } from "recoil";
 
 import { modalState } from "@/recoil/modal";
-import { useHandleModal } from "@/hooks/useHandleModal";
+import { useModal } from "@/hooks/useModal";
 import * as style from "./ModalPortal.style";
 
 const ModalPortal = () => {
-  const [{ isOpen, isSuccess, content }] = useRecoilState(modalState);
-  const { handleCloseModal } = useHandleModal();
+  const [{ isOpen, content }] = useRecoilState(modalState);
+  const { handleCloseModal } = useModal();
 
   if (isOpen) {
     const modalRoot =
@@ -28,7 +28,7 @@ const ModalPortal = () => {
     return modalRoot && content
       ? createPortal(
           <style.Wrapper id="modal_overlay" onClick={closeModalByClick}>
-            <style.Box isSuccess={isSuccess}>{content}</style.Box>
+            <style.Box>{content}</style.Box>
           </style.Wrapper>,
           modalRoot
         )

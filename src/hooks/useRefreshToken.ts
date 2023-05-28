@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { authState } from "@/recoil/auth";
 import { refreshToken } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
-import { useHandleModal } from "./useHandleModal";
+import useCustomToast from "./useCustomToast";
 
 /**
  * 새로고침시 토큰 다시 받아오는 hook
@@ -14,7 +14,6 @@ import { useHandleModal } from "./useHandleModal";
 export const useRefreshToken = () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useRecoilState(authState);
-  const { handleOpenModal } = useHandleModal();
 
   const { refetch } = useQuery(queryKeys.user, refreshToken, {
     enabled: false,
@@ -22,7 +21,7 @@ export const useRefreshToken = () => {
       setIsAuth(true);
     },
     onError: () => {
-      handleOpenModal(false, "다시 로그인 헤주세요");
+      useCustomToast("error", "다시 로그인 해주세요.");
       navigate({
         pathname: "/signin",
       });

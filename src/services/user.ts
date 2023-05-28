@@ -4,33 +4,26 @@ import { postAuthApi } from "@/apis/authApi";
 
 /**
  * 회원가입
- * @param id 아이디
- * @param password 비밀번호
- * @param name 이름
- * @param company 택배 회사
- * @param phone 핸드폰
  * @param email 이메일
- * @returns 가입 성공 시 success, 실패 시 에러 반환 (1001, 500 등)
+ * @param name 이름
+ * @param password 비밀번호
+ * @param phoneNumber 핸드폰
+ * @returns 가입 성공
  */
 export const signUp = async (props: SignUpInputType) => {
-  const response = await postPublicApi<undefined, SignUpInputType>(
-    "/signUp",
-    props
-  );
+  const response = await postPublicApi<null, SignUpInputType>("/signUp", props);
 
   return response;
 };
 
 /**
  * 로그인
- * @param id 아이디
+ * @param email 이메일
  * @param password 비밀번호
  * @returns 성공 시 JWT 액세스 토큰 인계, 실패 시 에러 객체 반환
  */
 export const signIn = async (props: SignInInputType) => {
-  const response = await postAuthApi<any, SignInInputType>("/signIn", {
-    ...props,
-  });
+  const response = await postAuthApi<null, SignInInputType>("/signIn", props);
 
   return response;
 };
@@ -40,7 +33,7 @@ export const signIn = async (props: SignInInputType) => {
  * @returns 성공 시 header 비움
  */
 export const signOut = async () => {
-  const response = await postAuthApi<undefined, undefined>("/signOut");
+  const response = await postAuthApi<null, null>("/signOut");
 
   return response;
 };
@@ -50,7 +43,7 @@ export const signOut = async () => {
  * @returns 성공 시
  */
 export const refreshToken = async () => {
-  const response = await postAuthApi<any, any>("/reissue");
+  const response = await postAuthApi<null, null>("/reissue");
 
   return response;
 };

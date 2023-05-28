@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { css, keyframes } from "@emotion/react";
 
-interface ModalState {
-  isSuccess: Boolean;
-}
-
 const slideIn = keyframes`
   from {
     transform: translateY(-100%);
@@ -28,14 +24,13 @@ export const Wrapper = styled.div`
   animation: ${slideIn} 0.5s ease-in-out;
 `;
 
-export const Box = styled.div<ModalState>`
-  ${({ theme, isSuccess }) => {
+export const Box = styled.div`
+  ${({ theme }) => {
     return css`
       width: 200px;
       height: 30px;
 
       color: ${theme.colors.white};
-      background-color: ${isSuccess ? theme.colors.main : theme.colors.red};
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border-radius: 15px;
     `;

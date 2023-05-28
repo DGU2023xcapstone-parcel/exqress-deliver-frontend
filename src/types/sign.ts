@@ -1,20 +1,20 @@
 export type SignUpType = keyof SignUpInputType;
 
-export interface SignUpInputType {
+export type SignUpInputType = {
   email: string;
   name: string;
   password: string;
   phoneNumber: string;
-}
+};
 
-export interface SignUpValidateType {
+export type SignUpValidateType = {
   email: boolean;
   name: boolean;
   password: boolean;
   phoneNumber: boolean;
-}
+};
 
-export interface SignInInputType {
+export type SignInInputType = {
   email: string;
   password: string;
-}
+};

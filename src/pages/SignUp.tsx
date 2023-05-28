@@ -7,11 +7,9 @@ import { SignUpInputType, SignUpType, SignUpValidateType } from "@/types/sign";
 
 const SignUp = () => {
   const [signUpValue, setSignUpValue] = useState<SignUpInputType>({
-    // id: "",
     email: "",
     name: "",
     password: "",
-    // company: "",
     phoneNumber: "",
   });
   const [signUpValidate, setSignUpValidate] = useState<SignUpValidateType>({
@@ -32,13 +30,13 @@ const SignUp = () => {
   const { handleSignUp } = useSignUp(signUpValue);
 
   const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
-    const { valid, message } = validateSignUp(
+    const { isValid, message } = validateSignUp(
       e.target.name as SignUpType,
       e.target.value
     );
     const newValid = {
       ...signUpValidate,
-      [e.target.name]: valid,
+      [e.target.name]: isValid,
     };
 
     setSignUpValue({

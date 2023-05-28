@@ -1,10 +1,9 @@
-import { AxiosError } from "axios";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
 import { scanQrCode } from "@/services/scan";
 import { queryKeys } from "@/react-query/constants";
-import { CommonResponse } from "@/apis/types";
+import { CustomAxiosErrorType } from "@/types/api";
 import useCustomToast from "./useCustomToast";
 
 /**
@@ -16,7 +15,7 @@ export const useScanQrCode = () => {
   const [result, setResult] = useState("");
 
   const { mutate } = useMutation(queryKeys.scan, scanQrCode, {
-    onError: (error: AxiosError<CommonResponse<any>>) => {
+    onError: (error: CustomAxiosErrorType) => {
       useCustomToast("error", error.response?.data.message);
     },
     onSuccess() {
@@ -31,5 +30,9 @@ export const useScanQrCode = () => {
     }
   };
 
-  return { handleScan, result };
+  const handleError = (error: any) => {
+    console.log(error);
+  };
+
+  return { handleScan, handleError, result };
 };

@@ -1,9 +1,8 @@
-import { AxiosError } from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 import { getInfoList } from "@/services/info";
 import { queryKeys } from "@/react-query/constants";
-import { CommonResponse } from "@/apis/types";
+import { CustomAxiosErrorType } from "@/types/api";
 import useCustomToast from "./useCustomToast";
 
 /**
@@ -13,7 +12,7 @@ import useCustomToast from "./useCustomToast";
 export const useGetInfoList = () => {
   const { data = [] } = useQuery(queryKeys.info, getInfoList, {
     enabled: true,
-    onError: (error: AxiosError<CommonResponse<any>>) => {
+    onError: (error: CustomAxiosErrorType) => {
       useCustomToast("error", error.response?.data.message);
     },
     onSuccess() {

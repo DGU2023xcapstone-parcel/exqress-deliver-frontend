@@ -1,20 +1,18 @@
-import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { queryKeys } from "@/react-query/constants";
 
 import { completeDeliver } from "@/services/info";
 import { InfoType } from "@/types/info";
-import { CommonResponse } from "@/apis/types";
+import { CustomAxiosErrorType } from "@/types/api";
 import useCustomToast from "./useCustomToast";
 
 /**
- * 회원가입 hook
- * @returns 회원가입 핸들러 반환
+ * 배송완료 처리 hook
+ * @returns 배송완료 처리 핸들러 반환
  */
 export const useCompleteDeliver = () => {
   const { mutate } = useMutation(queryKeys.user, completeDeliver, {
-    onError: (error: AxiosError<CommonResponse<any>>) => {
-      console.log(error);
+    onError: (error: CustomAxiosErrorType) => {
       useCustomToast("error", error.response?.data.message);
     },
     onSuccess() {

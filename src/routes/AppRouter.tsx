@@ -5,7 +5,7 @@ import SignIn from "@/pages/SignIn";
 import SignUp from "@/pages/SignUp";
 import Info from "@/pages/Info";
 import Layout from "@/components/common/layout";
-import RouteTransition from "../components/common/route-transition";
+import RouteTransition from "@/components/common/route-transition";
 
 const AppRouter = () => {
   const location = useLocation();

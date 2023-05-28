@@ -3,6 +3,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@/styles/toast.css";
 
+/**
+ * react-toastify를 커스텀한 hook
+ * @param type 어떤 유형의 toast를 띄울건지
+ * @param message toast에 어떤 메세지를 띄울건지
+ * @returns toast
+ */
 const useCustomToast = (type: string, message?: string) => {
   const config = {
     position: toast.POSITION.TOP_CENTER,
@@ -26,7 +32,6 @@ const useCustomToast = (type: string, message?: string) => {
     default:
       return toast(message, config);
   }
-  // 3-1. 성공, 실패, 경고, default 케이스마다 토스트 메세지의 마크가 다르게 표시된다.
 };
 
 export default useCustomToast;

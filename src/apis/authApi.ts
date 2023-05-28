@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
+
+import { CommonResponse } from "@/types/api";
 import { authApi } from "./API";
-import { CommonResponse } from "./types";
 
 /**
  * 인가필요한 get 요청
