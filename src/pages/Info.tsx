@@ -1,30 +1,14 @@
-import { ChangeEvent, useState } from "react";
-
-import InfoTemplate from "@/components/template/info";
-import { useGetInfoList } from "@/hooks/useGetInfoList";
 import { useScroll } from "@/hooks/useScroll";
-import { useRefreshToken } from "@/hooks/useRefreshToken";
+import { useGetInfoList } from "@/hooks/useGetInfoList";
 import { useCompleteDeliver } from "@/hooks/useCompleteDeliver";
+import InfoTemplate from "@/components/template/info";
+import { useRefreshToken } from "../hooks/useRefreshToken";
 
 const Info = () => {
-  const [radioValue, setRadioValue] = useState("all");
-
-  const { data } = useGetInfoList();
+  useRefreshToken();
+  const { infoList, radioValue, handleRadio } = useGetInfoList();
   const { handleCompleteDeliver } = useCompleteDeliver();
   const { isScrollable, contentRef } = useScroll(radioValue);
-  useRefreshToken();
-
-  const infoList = data.filter((info) =>
-    radioValue === "all"
-      ? true
-      : radioValue === "done"
-      ? info.isComplete === "true"
-      : info.isComplete === "false"
-  );
-
-  const handleRadio = (e: ChangeEvent<HTMLInputElement>) => {
-    setRadioValue(e.target.value);
-  };
 
   return (
     <InfoTemplate

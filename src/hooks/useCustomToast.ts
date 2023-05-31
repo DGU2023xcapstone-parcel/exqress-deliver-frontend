@@ -20,17 +20,21 @@ const useCustomToast = (type: string, message?: string) => {
     pauseOnFocusLoss: false,
     draggable: false,
     pauseOnHover: false,
+    toastId: "myToast",
   };
 
   switch (type) {
     case "success":
-      return toast.success(message, config);
+      if (!toast.isActive("myToast")) return toast.success(message, config);
+      break;
     case "error":
-      return toast.error(message, config);
+      if (!toast.isActive("myToast")) return toast.error(message, config);
+      break;
     case "warning":
-      return toast.warning(message, config);
+      if (!toast.isActive("myToast")) return toast.warning(message, config);
+      break;
     default:
-      return toast(message, config);
+      if (!toast.isActive("myToast")) return toast(message, config);
   }
 };
 

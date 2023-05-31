@@ -5,6 +5,8 @@ import { scanQrCode } from "@/services/scan";
 import { queryKeys } from "@/react-query/constants";
 import { CustomAxiosErrorType } from "@/types/api";
 import useCustomToast from "./useCustomToast";
+import { useNavigate } from "react-router-dom";
+import { useGetInfoList } from "./useGetInfoList";
 
 /**
  * 스캔 결과값을 받아오는 hooks, 만약 값 있다? 값 반환, 유효하지않은 qr, 니꺼아님
@@ -12,6 +14,8 @@ import useCustomToast from "./useCustomToast";
  * @returns info 리스트
  */
 export const useScanQrCode = () => {
+  const naviage = useNavigate();
+  const { refetchInfo } = useGetInfoList();
   const [result, setResult] = useState("");
 
   const { mutate } = useMutation(queryKeys.scan, scanQrCode, {
@@ -20,6 +24,10 @@ export const useScanQrCode = () => {
     },
     onSuccess() {
       useCustomToast("success", "스캔 성공!");
+      refetchInfo();
+      naviage({
+        pathname: "/",
+      });
     },
   });
 

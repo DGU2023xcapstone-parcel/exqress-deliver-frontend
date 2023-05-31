@@ -52,6 +52,6 @@ export const validateSignUp = (type: SignUpType, input: string) => {
  */
 export const validateAll = (input: SignUpValidateType) => {
   for (let key in input)
-    if (input[key as keyof SignUpValidateType] === false) return false;
+    if (input[key as keyof SignUpValidateType].isValid === false) return false;
   return true;
 };

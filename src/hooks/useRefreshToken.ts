@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -11,13 +10,14 @@ import useCustomToast from "./useCustomToast";
 /**
  * 새로고침시 토큰 다시 받아오는 hook
  */
-export const useRefreshToken = () => {
+export const useRefreshToken = async () => {
   const navigate = useNavigate();
   const [isAuth, setIsAuth] = useRecoilState(authState);
 
   const { refetch } = useQuery(queryKeys.user, refreshToken, {
     enabled: false,
     onSuccess: () => {
+      console.log("siccess");
       setIsAuth(true);
     },
     onError: () => {
@@ -27,8 +27,5 @@ export const useRefreshToken = () => {
       });
     },
   });
-
-  useEffect(() => {
-    if (!isAuth) refetch();
-  }, []);
+  if (!isAuth) await refetch();
 };

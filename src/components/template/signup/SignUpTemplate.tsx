@@ -8,7 +8,6 @@ import * as style from "./SignUpTemplate.style";
 export interface SignUpTemplateProps {
   signUpValue: SignUpInputType;
   signUpValidate: SignUpValidateType;
-  signUpValidMessage: SignUpInputType;
   isSignUpActivate: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
@@ -16,7 +15,6 @@ export interface SignUpTemplateProps {
 const SignUpTemplate = ({
   signUpValue,
   signUpValidate,
-  signUpValidMessage,
   isSignUpActivate,
   onChange,
   onClick,
@@ -32,9 +30,9 @@ const SignUpTemplate = ({
           sizeType="Big"
           onChange={onChange}
         />
-        {signUpValidMessage.email && (
-          <style.SubText isValid={signUpValidate.email}>
-            {signUpValidMessage.email}
+        {signUpValidate.email.message && (
+          <style.SubText isValid={signUpValidate.email.isValid}>
+            {signUpValidate.email.message}
           </style.SubText>
         )}
       </style.TextBox>
@@ -47,9 +45,9 @@ const SignUpTemplate = ({
           sizeType="Big"
           onChange={onChange}
         />
-        {signUpValidMessage.name && (
-          <style.SubText isValid={signUpValidate.name}>
-            {signUpValidMessage.name}
+        {signUpValidate.name.message && (
+          <style.SubText isValid={signUpValidate.name.isValid}>
+            {signUpValidate.name.message}
           </style.SubText>
         )}
       </style.TextBox>
@@ -62,9 +60,9 @@ const SignUpTemplate = ({
           sizeType="Big"
           onChange={onChange}
         />
-        {signUpValidMessage.password && (
-          <style.SubText isValid={signUpValidate.password}>
-            {signUpValidMessage.password}
+        {signUpValidate.password.message && (
+          <style.SubText isValid={signUpValidate.password.isValid}>
+            {signUpValidate.password.message}
           </style.SubText>
         )}
       </style.TextBox>
@@ -77,9 +75,9 @@ const SignUpTemplate = ({
           sizeType="Big"
           onChange={onChange}
         />
-        {signUpValidMessage.phoneNumber && (
-          <style.SubText isValid={signUpValidate.phoneNumber}>
-            {signUpValidMessage.phoneNumber}
+        {signUpValidate.phoneNumber.message && (
+          <style.SubText isValid={signUpValidate.phoneNumber.isValid}>
+            {signUpValidate.phoneNumber.message}
           </style.SubText>
         )}
       </style.TextBox>

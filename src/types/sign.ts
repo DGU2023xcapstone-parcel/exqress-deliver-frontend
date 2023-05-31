@@ -8,10 +8,15 @@ export type SignUpInputType = {
 };
 
 export type SignUpValidateType = {
-  email: boolean;
-  name: boolean;
-  password: boolean;
-  phoneNumber: boolean;
+  email: validType;
+  name: validType;
+  password: validType;
+  phoneNumber: validType;
+};
+
+export type validType = {
+  isValid: boolean;
+  message: string;
 };
 
 export type SignInInputType = {

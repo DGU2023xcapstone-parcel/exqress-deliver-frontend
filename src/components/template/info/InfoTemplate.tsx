@@ -8,7 +8,7 @@ import * as style from "./InfoTemplate.style";
 
 const STATE_LIST = [
   { text: "전체", inputValue: "all" },
-  { text: "배송완료", inputValue: "done" },
+  { text: "배송완료", inputValue: "complete" },
   { text: "배송시작", inputValue: "start" },
 ];
 
@@ -54,7 +54,7 @@ const InfoTemplate = ({
             invoiceNo={info.invoiceNo}
             name={info.receiverName}
             phoneNumber={info.receiverPhoneNumber}
-            isComplete={info.isComplete === "false"}
+            isComplete={info.isComplete === "start"}
             address={info.address}
             onClick={onClick}
             key={info.invoiceNo}

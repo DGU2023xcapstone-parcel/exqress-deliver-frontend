@@ -1,61 +1,19 @@
-import { ChangeEvent, useState } from "react";
-
 import SignUpTemplate from "@/components/template/signup";
 import { useSignUp } from "@/hooks/useSignUp";
-import { validateAll, validateSignUp } from "@/utils/valid";
-import { SignUpInputType, SignUpType, SignUpValidateType } from "@/types/sign";
 
 const SignUp = () => {
-  const [signUpValue, setSignUpValue] = useState<SignUpInputType>({
-    email: "",
-    name: "",
-    password: "",
-    phoneNumber: "",
-  });
-  const [signUpValidate, setSignUpValidate] = useState<SignUpValidateType>({
-    email: false,
-    name: false,
-    password: false,
-    phoneNumber: false,
-  });
-  const [signUpValidMessage, setSignUpValideMessage] =
-    useState<SignUpInputType>({
-      email: "",
-      name: "",
-      password: "",
-      phoneNumber: "",
-    });
-  const [isSignUpActivate, setIsSignUpActivate] = useState(false);
-
-  const { handleSignUp } = useSignUp(signUpValue);
-
-  const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
-    const { isValid, message } = validateSignUp(
-      e.target.name as SignUpType,
-      e.target.value
-    );
-    const newValid = {
-      ...signUpValidate,
-      [e.target.name]: isValid,
-    };
-
-    setSignUpValue({
-      ...signUpValue,
-      [e.target.name]: e.target.value,
-    });
-    setSignUpValideMessage({
-      ...signUpValidMessage,
-      [e.target.name]: message,
-    });
-    setSignUpValidate(newValid);
-    setIsSignUpActivate(validateAll(newValid));
-  };
+  const {
+    signUpValue,
+    signUpValidate,
+    isSignUpActivate,
+    handleSignupState,
+    handleSignUp,
+  } = useSignUp();
 
   return (
     <SignUpTemplate
       signUpValue={signUpValue}
       signUpValidate={signUpValidate}
-      signUpValidMessage={signUpValidMessage}
       isSignUpActivate={isSignUpActivate}
       onChange={handleSignupState}
       onClick={handleSignUp}
