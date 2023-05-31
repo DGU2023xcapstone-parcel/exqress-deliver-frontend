@@ -38,8 +38,8 @@ export const InfoBox = styled.div<ScrollState>`
 
       overflow: auto;
 
-      touch-action: ${isScroll ? "pan-y" : "none"};
-      overscroll-behavior: contain;
+      /* touch-action: ${isScroll ? "pan-y" : "none"}; */
+      /* overscroll-behavior: contain; */
     `;
   }}
 `;
