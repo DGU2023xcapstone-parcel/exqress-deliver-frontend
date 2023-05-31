@@ -2,6 +2,7 @@ import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+import { authApi } from "@/apis/API";
 import { authState } from "@/recoil/auth";
 import { refreshToken } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
@@ -21,10 +22,13 @@ export const useRefreshToken = async () => {
     },
     onError: () => {
       useCustomToast("error", "다시 로그인 해주세요.");
+      setIsAuth(false);
       navigate({
         pathname: "/signin",
       });
     },
   });
-  if (!isAuth) await refetch();
+
+  if (!isAuth && !!!authApi.defaults.headers.common["Authorization"])
+    await refetch();
 };
