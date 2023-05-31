@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { scanQrCode } from "@/services/scan";
 import { queryKeys } from "@/react-query/constants";
 import { CustomAxiosErrorType } from "@/types/api";
 import useCustomToast from "./useCustomToast";
-import { useNavigate } from "react-router-dom";
 import { useGetInfoList } from "./useGetInfoList";
 
 /**

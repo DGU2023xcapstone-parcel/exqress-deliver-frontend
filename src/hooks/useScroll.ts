@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
  * @param props radio value 값
  * @returns scrollable 스크롤 되게 할건지, contentRef 컨텐츠에 접근하기 위한 ref
  */
-export const useScroll = (props: string) => {
+export const useScroll = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isScrollable, setScrollable] = useState(false);
 
@@ -17,7 +17,7 @@ export const useScroll = (props: string) => {
     } else {
       setScrollable(false);
     }
-  }, [props]);
+  }, []);
 
   return { isScrollable, contentRef };
 };

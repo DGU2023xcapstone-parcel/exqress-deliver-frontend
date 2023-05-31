@@ -17,7 +17,6 @@ export const useRefreshToken = async () => {
   const { refetch } = useQuery(queryKeys.user, refreshToken, {
     enabled: false,
     onSuccess: () => {
-      console.log("siccess");
       setIsAuth(true);
     },
     onError: () => {
