@@ -23,7 +23,6 @@ export const Wrapper = styled.div`
   z-index: 999;
 
   background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.5);
 `;
 
 export const Box = styled.div`

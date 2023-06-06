@@ -32,6 +32,7 @@ const InstallPrompt = () => {
 
   const handleCloseInstallPrompt = () => {
     setIsShown(false);
+    setIsIOS(false);
   };
 
   const handleInstallClick = () => {
