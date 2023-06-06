@@ -24,7 +24,7 @@ export const useRefreshToken = async () => {
       useCustomToast("error", "다시 로그인 해주세요.");
       setIsAuth(false);
       navigate({
-        pathname: "/signin",
+        pathname: "/",
       });
     },
   });

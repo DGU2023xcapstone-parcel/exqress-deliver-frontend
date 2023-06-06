@@ -23,6 +23,7 @@ const SignInTemplate = ({
       <style.Inner>
         <Input
           value={signInValue.email}
+          isPassword={false}
           name="email"
           placeHolder="이메일"
           sizeType="Big"
@@ -30,6 +31,7 @@ const SignInTemplate = ({
         />
         <Input
           value={signInValue.password}
+          isPassword
           name="password"
           placeHolder="비밀번호"
           sizeType="Big"

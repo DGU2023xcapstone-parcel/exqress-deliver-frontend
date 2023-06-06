@@ -26,7 +26,7 @@ export const useSignOut = () => {
       setIsAuth(false);
       setAccessToken("");
       navigate({
-        pathname: "/signin",
+        pathname: "/",
       });
     },
   });

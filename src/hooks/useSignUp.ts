@@ -39,7 +39,7 @@ export const useSignUp = () => {
     onSuccess() {
       useCustomToast("success", "회원가입 성공");
       navigate({
-        pathname: "/signin",
+        pathname: "/",
       });
     },
   });

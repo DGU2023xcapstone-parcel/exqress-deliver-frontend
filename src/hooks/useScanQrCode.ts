@@ -26,7 +26,7 @@ export const useScanQrCode = () => {
       useCustomToast("success", "스캔 성공!");
       refetchInfo();
       naviage({
-        pathname: "/",
+        pathname: "/info",
       });
     },
   });

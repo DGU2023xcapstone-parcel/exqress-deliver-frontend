@@ -21,10 +21,6 @@ const ModalPortal = () => {
       }
     };
 
-    setTimeout(() => {
-      handleCloseModal();
-    }, 1500);
-
     return modalRoot && content
       ? createPortal(
           <style.Wrapper id="modal_overlay" onClick={closeModalByClick}>

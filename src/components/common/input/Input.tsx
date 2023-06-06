@@ -8,6 +8,7 @@ interface InputProps {
   name: string;
   placeHolder: string;
   sizeType: SizeType;
+  isPassword: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 const Input = ({
@@ -15,10 +16,12 @@ const Input = ({
   name,
   placeHolder,
   sizeType,
+  isPassword,
   onChange,
 }: InputProps) => (
   <style.Wrapper sizeType={sizeType}>
     <style.Box
+      type={isPassword ? "password" : "test"}
       name={name}
       value={value}
       placeholder={placeHolder}

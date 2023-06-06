@@ -24,6 +24,7 @@ const SignUpTemplate = ({
       <style.TextBox>
         <style.Text>이메일</style.Text>
         <Input
+          isPassword={false}
           value={signUpValue.email}
           name="email"
           placeHolder="예) abcd@gmail.com"
@@ -39,6 +40,7 @@ const SignUpTemplate = ({
       <style.TextBox>
         <style.Text>이름</style.Text>
         <Input
+          isPassword={false}
           value={signUpValue.name}
           name="name"
           placeHolder=""
@@ -54,6 +56,7 @@ const SignUpTemplate = ({
       <style.TextBox>
         <style.Text>비밀번호</style.Text>
         <Input
+          isPassword
           value={signUpValue.password}
           name="password"
           placeHolder="영문, 숫자 조합 8~16자"
@@ -69,6 +72,7 @@ const SignUpTemplate = ({
       <style.TextBox>
         <style.Text>휴대폰 번호</style.Text>
         <Input
+          isPassword={false}
           value={signUpValue.phoneNumber}
           name="phoneNumber"
           placeHolder="전화번호 입력"

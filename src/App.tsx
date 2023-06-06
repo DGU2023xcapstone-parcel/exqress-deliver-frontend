@@ -11,6 +11,7 @@ import { queryClient } from "./react-query/queryClient";
 import Navigation from "./components/common/navigation";
 import Loading from "./components/common/loading";
 import ModalPortal from "./components/common/modal-portal";
+import InstallPrompt from "./components/common/install-prompt";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Loading />
             <AppRouter />
             <Navigation />
+            <InstallPrompt />
             <ModalPortal />
           </BrowserRouter>
         </QueryClientProvider>
