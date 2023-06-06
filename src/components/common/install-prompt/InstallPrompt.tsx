@@ -49,8 +49,11 @@ const InstallPrompt = () => {
       });
     }
   };
-  console.log(isShown);
-  if (isShown) {
+  if (!isIOS && !isShown) {
+    return null;
+  }
+
+  if (isShown || isIOS) {
     const modalRoot =
       typeof window !== "undefined" ? document.getElementById("modal") : null;
 
