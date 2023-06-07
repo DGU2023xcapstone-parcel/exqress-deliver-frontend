@@ -69,7 +69,7 @@ const InstallPrompt = () => {
   };
 
   if (!isIOS && !isShown) return null;
-  if (isInstalled) return null;
+  if (isIOS && isInstalled) return null;
   if (isShown || isIOS) {
     const modalRoot =
       typeof window !== "undefined" ? document.getElementById("modal") : null;
