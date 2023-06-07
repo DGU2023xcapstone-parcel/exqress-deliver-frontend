@@ -68,9 +68,8 @@ const InstallPrompt = () => {
     }
   };
 
-  if (!isIOS && (!isShown || isInstalled)) {
-    return null;
-  }
+  if (!isIOS && !isShown) return null;
+  if (isInstalled) return null;
 
   if (isShown || isIOS) {
     const modalRoot =
