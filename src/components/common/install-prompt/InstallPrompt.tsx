@@ -9,30 +9,47 @@ const InstallPrompt = () => {
   const [isShown, setIsShown] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
     const isDeviceIOS = /iPad|iPhone|iPod/.test(window.navigator.userAgent);
     setIsIOS(isDeviceIOS);
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    if (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      ("standalone" in window.navigator && window.navigator.standalone)
+    ) {
+      setIsInstalled(true);
+    }
 
     return () => {
       window.removeEventListener(
         "beforeinstallprompt",
         handleBeforeInstallPrompt
       );
+      window.removeEventListener("appinstalled", handleAppInstalled);
     };
   }, []);
 
   const handleBeforeInstallPrompt = (e: any) => {
     e.preventDefault();
     setDeferredPrompt(e);
+
+    setIsInstalled(true);
     setIsShown(true);
   };
 
   const handleCloseInstallPrompt = () => {
     setIsShown(false);
     setIsIOS(false);
+  };
+
+  const handleAppInstalled = () => {
+    setIsInstalled(true);
+    setIsShown(false); // 설치 완료 후 메시지를 더 이상 표시하지 않도록 상태를 업데이트
   };
 
   const handleInstallClick = () => {
@@ -50,7 +67,8 @@ const InstallPrompt = () => {
       });
     }
   };
-  if (!isIOS && !isShown) {
+
+  if (!isIOS && (!isShown || isInstalled)) {
     return null;
   }
 
