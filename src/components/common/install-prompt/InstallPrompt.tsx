@@ -18,7 +18,7 @@ const InstallPrompt = () => {
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("appinstalled", handleAppInstalled);
 
-    if (document.fullscreenElement === null) {
+    if (document.fullscreenElement !== null) {
       setIsInstalled(true);
     }
 
