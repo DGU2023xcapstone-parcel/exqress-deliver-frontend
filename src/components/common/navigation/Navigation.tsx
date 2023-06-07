@@ -9,14 +9,13 @@ import * as style from "./Navigation.style";
 const Navigation = () => {
   const { handleSignOut } = useSignOut();
   const location = useLocation();
-  const isSign =
-    location.pathname === "/signin" || location.pathname === "/signup";
+  const isSign = location.pathname === "/" || location.pathname === "/signup";
 
   return (
     <>
       {!isSign && (
         <style.Wrapper>
-          <Link to="/">
+          <Link to="/info">
             <style.Img src={Truck} />
           </Link>
           <Link to="/scan">

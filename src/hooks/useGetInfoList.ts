@@ -40,6 +40,7 @@ export const useGetInfoList = () => {
 
   useEffect(() => {
     if (isAuth) refetch();
+    console.log("1");
   }, [isAuth]);
 
   return { infoList, radioValue, handleRadio, refetchInfo: refetch };
