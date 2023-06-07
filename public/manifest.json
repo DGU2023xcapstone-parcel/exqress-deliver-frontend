@@ -2,7 +2,7 @@
   "name": "EXQRESS for deliver",
   "short_name": "EXQRESS for deliver",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#485EEE",
   "icons": [

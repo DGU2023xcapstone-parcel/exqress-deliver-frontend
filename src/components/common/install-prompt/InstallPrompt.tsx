@@ -18,7 +18,10 @@ const InstallPrompt = () => {
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("appinstalled", handleAppInstalled);
 
-    if (document.fullscreenElement !== null) {
+    if (
+      ("standalone" in window.navigator && window.navigator.standalone) ||
+      window.matchMedia("(display-mode: standalone)").matches
+    ) {
       setIsInstalled(true);
     }
 
