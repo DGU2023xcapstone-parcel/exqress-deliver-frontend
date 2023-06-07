@@ -3,7 +3,6 @@
 }
 
 .navigate-push-enter-active {
-  /* z-index: 1; */
   transform: translateX(0);
   transition: transform 300ms ease-in-out;
 }

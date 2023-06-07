@@ -18,10 +18,7 @@ const InstallPrompt = () => {
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("appinstalled", handleAppInstalled);
 
-    if (
-      window.matchMedia("(display-mode: standalone)").matches ||
-      ("standalone" in window.navigator && window.navigator.standalone)
-    ) {
+    if (document.fullscreenElement === null) {
       setIsInstalled(true);
     }
 
@@ -70,7 +67,6 @@ const InstallPrompt = () => {
 
   if (!isIOS && !isShown) return null;
   if (isInstalled) return null;
-
   if (isShown || isIOS) {
     const modalRoot =
       typeof window !== "undefined" ? document.getElementById("modal") : null;
