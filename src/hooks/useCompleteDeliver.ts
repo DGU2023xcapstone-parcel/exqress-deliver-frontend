@@ -24,7 +24,6 @@ export const useCompleteDeliver = () => {
   });
 
   const handleCompleteDeliver = (props: Pick<InfoType, "invoiceNo">) => {
-    console.log(props);
     mutate(props);
   };
 

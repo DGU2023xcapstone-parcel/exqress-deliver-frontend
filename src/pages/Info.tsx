@@ -6,6 +6,7 @@ import { useRefreshToken } from "@/hooks/useRefreshToken";
 
 const Info = () => {
   useRefreshToken();
+
   const { infoList, radioValue, handleRadio } = useGetInfoList();
   const { handleCompleteDeliver } = useCompleteDeliver();
   const { isScrollable, contentRef } = useScroll();

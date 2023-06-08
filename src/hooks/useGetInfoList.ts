@@ -41,7 +41,6 @@ export const useGetInfoList = () => {
   useEffect(() => {
     if (isAuth) {
       refetch();
-      console.log("refetch");
     }
   }, [isAuth]);
 

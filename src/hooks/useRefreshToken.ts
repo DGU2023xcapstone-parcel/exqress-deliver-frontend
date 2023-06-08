@@ -29,7 +29,10 @@ export const useRefreshToken = async () => {
     },
   });
 
-  if (!isAuth && authApi.defaults.headers.common["Authorization"]) {
+  if (
+    !isAuth &&
+    authApi.defaults.headers.common["Authorization"] !== "Bearer"
+  ) {
     await refetch();
   }
 };

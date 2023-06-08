@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { signOut } from "@/services/user";
-import { authState } from "@/recoil/auth";
 import { setAccessToken } from "@/apis/API";
 import { queryKeys } from "@/react-query/constants";
+import { authState } from "@/recoil/auth";
 import useCustomToast from "./useCustomToast";
 
 /**

@@ -4,6 +4,7 @@ import { useRefreshToken } from "@/hooks/useRefreshToken";
 
 const Scan = () => {
   useRefreshToken();
+
   const { result, handleScan, handleError } = useScanQrCode();
 
   return (

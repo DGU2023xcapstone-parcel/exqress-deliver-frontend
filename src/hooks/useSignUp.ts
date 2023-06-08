@@ -33,7 +33,6 @@ export const useSignUp = () => {
 
   const { mutate } = useMutation(queryKeys.user, signUp, {
     onError: (error: CustomAxiosErrorType) => {
-      console.log(error);
       useCustomToast("error", error.response?.data.message);
     },
     onSuccess() {
